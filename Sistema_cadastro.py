@@ -29,23 +29,6 @@ def cadastrar_pessoa(nomes, idades, emails):
     else:
         print("Situacao: Menor de idade")
 
-def exibir_pessoa(nomes, idades, emails, pos):
-    print("Nome: " + nomes[pos])
-    print("Idade: " + str(idades[pos]))
-    print("E-mail: " + emails[pos])
-    if idades[pos] >= 18:
-        print("Situacao: Maior de idade")
-    else:
-        print("Situacao: Menor de idade")
- 
-def buscar_pessoa(nomes, nome_procurado):
-    pos = 0
-    while pos < len(nomes):
-        if nomes[pos] == nome_procurado:
-            return pos
-        pos = pos + 1
-    return -1
-
 def consultar_pessoa(nomes, idades, emails):
     procurado = input("Nome para consultar: ")
     pos = buscar_pessoa(nomes, procurado)
@@ -66,6 +49,16 @@ def alterar_pessoa(nomes, idades, emails):
         print("Pessoa alterada!")
         exibir_pessoa(nomes, idades, emails, pos)
 
+def exibir_pessoa(nomes, idades, emails, pos):
+    print("Nome: " + nomes[pos])
+    print("Idade: " + str(idades[pos]))
+    print("E-mail: " + emails[pos])
+    if idades[pos] >= 18:
+        print("Situacao: Maior de idade")
+    else:
+        print("Situacao: Menor de idade")
+
+ 
 def listar_pessoas(nomes, idades, emails):
     if len(nomes) == 0:
         print("Nenhuma pessoa cadastrada")
@@ -75,6 +68,14 @@ def listar_pessoas(nomes, idades, emails):
         print("-------------------------")
         pos = pos + 1
     print("Total: " + str(len(nomes)))
+
+def buscar_pessoa(nomes, nome_procurado):
+    pos = 0
+    while pos < len(nomes):
+        if nomes[pos] == nome_procurado:
+            return pos
+        pos = pos + 1
+    return -1
 
 while op != 5:
     op = exibir_menu()
