@@ -58,7 +58,6 @@ def exibir_pessoa(nomes, idades, emails, pos):
     else:
         print("Situacao: Menor de idade")
 
- 
 def listar_pessoas(nomes, idades, emails):
     if len(nomes) == 0:
         print("Nenhuma pessoa cadastrada")
