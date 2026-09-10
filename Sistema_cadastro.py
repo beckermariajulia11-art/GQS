@@ -46,7 +46,7 @@ def alterar_pessoa(nomes, idades, emails):
         nomes[pos] = input("Novo nome: ")
         idades[pos] = int(input("Nova idade: "))
         emails[pos] = input("Novo e-mail: ")
-        print("Pessoa alterada!")
+        print("Pessoa alterada com sucesso!")
         exibir_pessoa(nomes, idades, emails, pos)
 
 def exibir_pessoa(nomes, idades, emails, pos):
