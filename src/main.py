@@ -129,21 +129,25 @@ def analisar_pessoa(cadastro):
             pessoa.get_email()
         )
 
-cadastro_pessoas = CadastroPessoas()
+def executar():
+    """Executa o programa principal."""
+    cadastro_pessoas = CadastroPessoas()
+    op = 0
 
-op = 0
+    while op != 6:
+        op = exibir_menu()
+        if op == 1:
+            cadastrar_pessoa(cadastro_pessoas)
+        elif op == 2:
+            consultar_pessoa(cadastro_pessoas)
+        elif op == 3:
+            alterar_pessoa(cadastro_pessoas)
+        elif op == 4:
+            listar_pessoas(cadastro_pessoas)
+        elif op == 5:
+            analisar_pessoa(cadastro_pessoas)
 
-while op != 6:
-    op = exibir_menu()
-    if op == 1:
-        cadastrar_pessoa(cadastro_pessoas)
-    elif op == 2:
-        consultar_pessoa(cadastro_pessoas)
-    elif op == 3:
-        alterar_pessoa(cadastro_pessoas)
-    elif op == 4:
-        listar_pessoas(cadastro_pessoas)
-    elif op == 5:
-        analisar_pessoa(cadastro_pessoas)
+    print("Fim do programa")
 
-print("Fim do programa")
+if __name__ == "__main__":
+    executar()
