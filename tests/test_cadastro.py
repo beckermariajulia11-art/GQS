@@ -13,19 +13,19 @@ def test_cadastrar_pessoa():
 
     pessoas = cadastro.listar()
     assert len(pessoas) == 1
-    assert pessoas[0].getNome() == "Ana"
-    assert pessoas[0].getIdade() == 20
-    assert pessoas[0].getEmail() == "ana@example.com"
+    assert pessoas[0].get_nome() == "Ana"
+    assert pessoas[0].get_idade() == 20
+    assert pessoas[0].get_email() == "ana@example.com"
 
 def test_buscar_por_nome():
     """Encontra uma pessoa já cadastrada."""
     cadastro = CadastroPessoas(RepositorioPessoasMemoria())
     cadastro.cadastrar("Ana", 20, "ana@example.com")
-    encontrada = cadastro.buscarPorNome("Ana")
+    encontrada = cadastro.buscar_por_nome("Ana")
     assert encontrada is not None
-    assert encontrada.getNome() == "Ana"
-    assert encontrada.getIdade() == 20
-    assert encontrada.getEmail() == "ana@example.com"
+    assert encontrada.get_nome() == "Ana"
+    assert encontrada.get_idade() == 20
+    assert encontrada.get_email() == "ana@example.com"
 
 class RepositorioDeCopias(RepositorioPessoasMemoria):
     """Devolve cópias, simulando objetos reconstruídos."""
@@ -49,5 +49,5 @@ def test_alterar_persiste(fabrica):
     pessoa = repositorio.buscar("Ana Souza")
 
     assert pessoa is not None
-    assert pessoa.getIdade() == 31
-    assert pessoa.getEmail() == "ana.s@example.com"
+    assert pessoa.get_idade() == 31
+    assert pessoa.get_email() == "ana.s@example.com"
