@@ -22,9 +22,9 @@ class RepositorioPessoasMySQL(RepositorioPessoas):
                 VALUES (%s, %s, %s)
             """
             valores = (
-                pessoa.getNome(),
-                pessoa.getIdade(),
-                pessoa.getEmail()
+                pessoa.get_nome(),
+                pessoa.get_idade(),
+                pessoa.get_email()
             )
 
             cursor.execute(sql, valores)
@@ -117,9 +117,9 @@ class RepositorioPessoasMySQL(RepositorioPessoas):
                 WHERE id = %s
                 """,
                 (
-                    nova_pessoa.getNome(),
-                    nova_pessoa.getIdade(),
-                    nova_pessoa.getEmail(),
+                    nova_pessoa.get_nome(),
+                    nova_pessoa.get_idade(),
+                    nova_pessoa.get_email(),
                     resultado["id"]
                 )
             )

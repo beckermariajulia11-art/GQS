@@ -17,7 +17,7 @@ class RepositorioPessoasMemoria(RepositorioPessoas):
 
     def buscar(self, nome: str) -> Optional[Pessoa]:
         for pessoa in self.__pessoas:
-            if pessoa.getNome() == nome:
+            if pessoa.get_nome() == nome:
                 return pessoa
         return None
 
@@ -26,7 +26,7 @@ class RepositorioPessoasMemoria(RepositorioPessoas):
 
     def alterar(self, nome: str, nova_pessoa: Pessoa) -> bool:
         for posicao, pessoa in enumerate(self.__pessoas):
-            if pessoa.getNome() == nome:
+            if pessoa.get_nome() == nome:
                 self.__pessoas[posicao] = nova_pessoa
                 return True
         return False

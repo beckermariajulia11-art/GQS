@@ -27,15 +27,15 @@ def test_operacoes_repositorio_mysql():
         encontrada = repositorio.buscar(nome)
 
         assert encontrada is not None
-        assert encontrada.getNome() == nome
-        assert encontrada.getIdade() == 25
-        assert encontrada.getEmail() == email
+        assert encontrada.get_nome() == nome
+        assert encontrada.get_idade() == 25
+        assert encontrada.get_email() == email
 
         # Listagem
         pessoas = repositorio.listar()
 
         assert any(
-            item.getEmail() == email
+            item.get_email() == email
             for item in pessoas
         )
 
@@ -47,8 +47,8 @@ def test_operacoes_repositorio_mysql():
         alterada = repositorio.buscar(novo_nome)
 
         assert alterada is not None
-        assert alterada.getIdade() == 30
-        assert alterada.getEmail() == novo_email
+        assert alterada.get_idade() == 30
+        assert alterada.get_email() == novo_email
 
         # Busca inexistente
         assert repositorio.buscar(nome) is None
