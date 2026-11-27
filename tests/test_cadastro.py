@@ -1,3 +1,5 @@
+"""Testes das operações de cadastro."""
+
 import copy
 
 import pytest
@@ -5,6 +7,7 @@ import pytest
 from cadastro import CadastroPessoas
 from pessoa import Pessoa
 from repositorio_pessoas_memoria import RepositorioPessoasMemoria
+
 
 def test_cadastrar_pessoa():
     """Confere armazenamento e quantidade."""
@@ -17,6 +20,7 @@ def test_cadastrar_pessoa():
     assert pessoas[0].get_idade() == 20
     assert pessoas[0].get_email() == "ana@example.com"
 
+
 def test_buscar_por_nome():
     """Encontra uma pessoa já cadastrada."""
     cadastro = CadastroPessoas(RepositorioPessoasMemoria())
@@ -27,15 +31,16 @@ def test_buscar_por_nome():
     assert encontrada.get_idade() == 20
     assert encontrada.get_email() == "ana@example.com"
 
-class RepositorioDeCopias(RepositorioPessoasMemoria):
+
+class RepositorioDeCopias(RepositorioPessoasMemoria):  # pylint: disable=too-few-public-methods
     """Devolve cópias, simulando objetos reconstruídos."""
 
     def buscar(self, nome):
+        """Busca e retorna uma cópia da pessoa encontrada."""
         pessoa = super().buscar(nome)
         if pessoa is None:
             return None
         return copy.copy(pessoa)
-
 
 @pytest.mark.parametrize("fabrica", [RepositorioPessoasMemoria, RepositorioDeCopias])
 def test_alterar_persiste(fabrica):
