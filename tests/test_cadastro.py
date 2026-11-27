@@ -56,3 +56,15 @@ def test_alterar_persiste(fabrica):
     assert pessoa is not None
     assert pessoa.get_idade() == 31
     assert pessoa.get_email() == "ana.s@example.com"
+
+def test_buscar_pessoa_inexistente():
+    """Retorna None ao buscar um nome não cadastrado."""
+    cadastro = CadastroPessoas(RepositorioPessoasMemoria())
+    assert cadastro.buscar_por_nome("Inexistente") is None
+
+
+def test_alterar_pessoa_inexistente():
+    """Retorna None ao tentar alterar uma pessoa não cadastrada."""
+    cadastro = CadastroPessoas(RepositorioPessoasMemoria())
+    resultado = cadastro.alterar("Inexistente", "Novo", 25, "novo@example.com")
+    assert resultado is None
