@@ -1,17 +1,18 @@
-
-"""Configuração de conexão com o banco de dados MySQL."""
+"""Módulo de conexão com o banco de dados MySQL."""
 
 import os
-
 import mysql.connector
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def conectar():
-    """Abre e retorna uma conexão com o MySQL."""
+    """Estabelece e retorna uma conexão ativa com o banco MySQL."""
     return mysql.connector.connect(
         host=os.getenv("DB_HOST", "127.0.0.1"),
         port=int(os.getenv("DB_PORT", "3307")),
-        database=os.getenv("DB_NAME", "cadastro"),
         user=os.getenv("DB_USER", "root"),
-        password=os.getenv("DB_PASSWORD", "root_lab_2026"),
+        password=os.getenv("DB_PASSWORD", ""),
+        database=os.getenv("DB_NAME", "cadastro"),
     )
